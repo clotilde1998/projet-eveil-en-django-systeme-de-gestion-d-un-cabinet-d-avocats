@@ -20,6 +20,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'dossier-list' %}">Affaires</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'conseils-list' %}">Conseils</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'redactions-list' %}">Redaction</a>
+          </li>
           
         </ul>
 
@@ -29,7 +35,7 @@
   
             {% csrf_token %}
           <input class="form-control me-2" type="search" placeholder="Search Venues" name="searched" aria-label="Search">
-          <button class="btn btn-outline-primary" type="submit">Search</button>
+          <button class="btn btn-outline-primary" type="submit">Recherche</button>
         </form>
       </div>
     </div>

@@ -1,9 +1,18 @@
-{%extends 'avocat/layout.html' %}
+{%extends 'avocat/layout.html'%}
+{%load static %}
 
 						{%block content%}
 								<center>
-									<h1>Bienvenue au système de gestion du Cabinet d'avocats</br>
+									<h1>Bienvenue au système de gestion du Cabinet d'avocats 
 										NADJINAN & Associés &nbsp </h1>
+										<br>
 								</center>
 
-						{%endblock%}
+								<p>		
+									<img src="{% static 'image/balance.jpg'%}" width="100%" height="400px" alt="image d'une balance"/>
+
+									
+								</p>
+						
+						{%endblock%}					
+					

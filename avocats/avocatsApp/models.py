@@ -1,10 +1,15 @@
 from django.db import models
 
+GENDER = (
+			(0, 'F'),
+			(1, 'M'),
+		)
+
 # Create your models here.
 class Clients(models.Model):
     nom = models.CharField('Nom du Client', max_length=120)
     prenom = models.CharField('Prenom du  Client', max_length=120)
-    sexe = models.CharField('Sexe', max_length=50)
+    sexe = models.PositiveBigIntegerField(choices=GENDER, null=True)
     adresse = models.CharField('adresse du Client', max_length=120)
     tel = models.CharField('Telephone du Client', max_length=120)
     profession = models.CharField('Profession du Client', max_length=50)
@@ -37,3 +42,22 @@ class Dossiers(models.Model):
     def __str__(self):
         return self.statut
 
+class Conseils(models.Model):
+    
+    date = models.DateTimeField("Date de reception")
+    categorie = models.CharField("Categorie du Conseil", max_length=50)
+    description = models.TextField("Description du Conseil")
+    clients = models.ForeignKey(Clients, blank=False, on_delete=models.CASCADE)
+    personnels = models.ForeignKey(Personnels, blank=False, on_delete=models.PROTECT)
+    def __str__(self):
+        return self.categorie
+
+class Redactions(models.Model):
+    
+    date = models.DateTimeField("Date de reception")
+    categorie = models.CharField("Categorie de la Redaction", max_length=50)
+    description = models.TextField("Description de la Redaction")
+    clients = models.ForeignKey(Clients, blank=False, on_delete=models.CASCADE)
+    personnels = models.ForeignKey(Personnels, blank=False, on_delete=models.PROTECT)
+    def __str__(self):
+        return self.categorie

@@ -1,5 +1,5 @@
 from django.forms import ModelForm 
-from .models import Clients, Personnels, Dossiers
+from .models import Clients, Personnels, Dossiers, Conseils, Redactions
 from django.db.models import fields 
 from django.db import models
 
@@ -63,6 +63,32 @@ class DossiersForm(ModelForm):
 	    labels = {
 		    'Date': '',  
 		    'Statut': '',    
+		    'Categorie': '',
+			'Description':'',  
+		    'Client': '', 
+		    'Personnel': '',  
+	    }
+
+class ConseilsForm(ModelForm):
+    class Meta:
+	    model = Conseils
+	    fields ='__all__'
+
+	    labels = {
+		    'Date': '',      
+		    'Categorie': '',
+			'Description':'',  
+		    'Client': '', 
+		    'Personnel': '',  
+	    }
+
+class RedactionsForm(ModelForm):
+    class Meta:
+	    model = Redactions
+	    fields ='__all__'
+
+	    labels = {
+		    'Date': '',    
 		    'Categorie': '',
 			'Description':'',  
 		    'Client': '', 
