@@ -1,0 +1,47 @@
+{% extends 'avocat/layout.html' %}
+
+						{% block content %}
+							<h1>Liste des Honoraires du Cabinet</h1>
+							<div class="col-12 d-flex justify-content-end mb-2"> <a class="btn btn-primary sm " href="{% url 'honoraire-add' %}">
+								Nouveau Honoraire
+						</a></div>
+								<table class="table table-bordered table-striped table-hover">
+								  <thead class="table-dark">
+									<tr>
+									  <th>Date  de reception </th>
+									  <th>Type de Payement</th>
+									  <th>Total</th>
+									  <th>Reste</th>
+									  <th>Montant</th>
+									  <th>Affaires</th>
+									  <th>Client(e) concerné(e)</th>
+									  <th>Personnel en charge</th>
+									  <th>Actions</th>
+									</tr>
+								  </thead>
+								  <tbody>            
+									{% for honoraire in  honoraires %} 
+									<tr class="success">
+									  <td>{{honoraire.date}}</td>
+									  <td>{{honoraire.payement}}</td>
+									  <td>{{honoraire.total}}</td>
+									  <td>{{honoraire.reste}}</td>
+									  <td>{{honoraire.montant}}</td>
+									  <td>{{audience.dossierss.nature}}</td>
+                                      <td>{{audience.clientss.nom}}</td>
+									  <td>{{audience.personnels01.nom}}</td>
+									  <td>
+										<a class="btn btn-outline-primary sm" href="{% url 'honoraire-update' honoraire.total %}"> Editer</a>
+										<a class="btn btn-outline-danger sm" href="{% url 'honoraire-delete' honoraire.total %}"> Supprimer</a>
+									</td>
+
+
+
+									</tr>
+									{% endfor %}
+									
+									
+								  </tbody>
+								</table>
+
+						{% endblock %}

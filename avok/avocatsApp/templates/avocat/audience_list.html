@@ -1,0 +1,49 @@
+{% extends 'avocat/layout.html' %}
+
+						{% block content %}
+							<h1>Liste des Audiences du Cabinet</h1>
+							<div class="col-12 d-flex justify-content-end mb-2"> <a class="btn btn-primary sm " href="{% url 'audience-add' %}">
+								Nouvelles Audiences Juridiques
+						</a></div>
+								<table class="table table-bordered table-striped table-hover">
+								  <thead class="table-dark">
+									<tr>
+									  <th>Date  de l'audience </th>
+									  <th>Nature de l'audience</th>
+									  <th>Subtitution</th>
+									  <th>Chambre en charge</th>
+									  <th>Juridiction</th>
+									  <th>Affaires</th>
+									  <th>Client(e) concerné(e)</th>
+									  <th>Personnel en charge</th>
+									  <th>Decisions</th>
+									  <th>Actions</th>
+									</tr>
+								  </thead>
+								  <tbody>            
+									{% for audience in  audiences %} 
+									<tr class="success">
+									  <td>{{audience.date}}</td>
+									  <td>{{audience.statut}}</td>
+									  <td>{{audience.subtitution}}</td>
+									  <td>{{audience.personne}}</td>
+									  <td>{{audience.juridiction}}</td>
+									  <td>{{audience.dossiers.nature}}</td>
+                                      <td>{{audience.clients.nom}}</td>
+									  <td>{{audience.personnels.nom}}</td>
+									  <td>{{audience.commentaire}}</td>
+									  <td>
+										<a class="btn btn-outline-primary sm" href="{% url 'audience-update' audience.statut %}"> Editer</a>
+										<a class="btn btn-outline-danger sm" href="{% url 'audience-delete' audience.statut %}"> Supprimer</a>
+									</td>
+
+
+
+									</tr>
+									{% endfor %}
+									
+									
+								  </tbody>
+								</table>
+
+						{% endblock %}
